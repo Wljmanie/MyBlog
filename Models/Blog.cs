@@ -7,7 +7,7 @@ namespace MyBlog.Models
     public class Blog
     {
         public int Id { get; set; }
-        public string AuthorId { get; set; }
+        public string? AuthorId { get; set; }
         public BlogStatus BlogStatus { get; set; }
 
         [Required]
@@ -33,6 +33,7 @@ namespace MyBlog.Models
         public IFormFile? Image { get; set; }
 
         //Navigation Properties
-        public virtual ICollection<Post> Posts { get; set; } = new HashSet<Post>();
+        public BlogUser? Author { get; set; }
+        public virtual ICollection<Post>? Posts { get; set; } = new HashSet<Post>();
     }
 }

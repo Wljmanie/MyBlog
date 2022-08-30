@@ -9,7 +9,7 @@ namespace MyBlog.Models
         public int Id { get; set; }
         public int PostId { get; set; }
         public int? CommentId { get; set; }
-        public string AuthorId { get; set; }
+        public string? AuthorId { get; set; }
         public string? ModeratorId { get; set; }
 
         [Required]
@@ -27,7 +27,7 @@ namespace MyBlog.Models
 
         //Navigation Properties
         public virtual Post Post {get;set;}
-        public virtual IdentityUser Author { get; set; }
-        public virtual IdentityUser? Moderator { get; set; }
+        public virtual BlogUser? Author { get; set; }
+        public virtual BlogUser? Moderator { get; set; }
     }
 }

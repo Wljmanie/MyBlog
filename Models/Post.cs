@@ -8,7 +8,7 @@ namespace MyBlog.Models
     public class Post
     {
         public int Id { get; set; }
-        public int BlogId { get; set; }
+        public int? BlogId { get; set; }
         public string AuthorId { get; set; }
 
         public PostStatus PostStatus { get; set; }
@@ -38,6 +38,8 @@ namespace MyBlog.Models
         public IFormFile? Image { get; set; }
 
         //Navigation Properties
+        public BlogUser Author { get; set; }
+        public Blog? Blog { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
         public virtual ICollection<PostTag> PostTags { get; set; } = new HashSet<PostTag>();
     }
