@@ -10,7 +10,6 @@ namespace MyBlog.Models
         public byte[]? ImageData { get; set; }
         public string? ContentType { get; set; }
         public bool Active { get; set; }
-
         [NotMapped]
         public IFormFile? Image { get; set; }
 

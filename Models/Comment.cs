@@ -11,7 +11,6 @@ namespace MyBlog.Models
         public int? CommentId { get; set; }
         public string? AuthorId { get; set; }
         public string? ModeratorId { get; set; }
-
         [Required]
         [StringLength(1024, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
         public string Message { get; set; }
@@ -19,7 +18,6 @@ namespace MyBlog.Models
         [StringLength(1024, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
         public string? ModeratedMessage { get; set; }
         public ModerationType ModerationType { get; set; }
-
         public DateTime Created { get; set; }
         public DateTime? Update { get; set; }
         public DateTime? Moderated { get; set; }

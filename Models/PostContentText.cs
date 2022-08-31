@@ -1,5 +1,4 @@
 ﻿using MyBlog.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBlog.Models
 {
@@ -7,10 +6,8 @@ namespace MyBlog.Models
     {
         public int Id { get; set; }
         public int PostId { get; set; }
-
         public int ContentIndex { get; set; }
         public PostContentType PostContentType { get; set; }
-
         public string ContentText { get; set; }
 
         //Navigation Properties

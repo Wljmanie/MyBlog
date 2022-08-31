@@ -6,14 +6,10 @@ namespace MyBlog.Models
     {
         public int Id { get; set; }
         public int PostId { get; set; }
-
         public int ContentIndex { get; set; }
         public PostContentType PostContentType { get; set; }
-
-        public CodeLanguage CodeLanguage { get; set; }
-        
+        public CodeLanguage CodeLanguage { get; set; }      
         //Plugins -> LineNumbers, AutoLinker, CopyToClipBoardButton, MatchBraces, ShowLanguage.
-
         public string ContentCode { get; set; }
 
         //Navigation Properties

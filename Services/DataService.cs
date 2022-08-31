@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MyBlog.Data;
 using MyBlog.Enums;
 using MyBlog.Models;
-using System.Linq;
 
 namespace MyBlog.Services
 {
