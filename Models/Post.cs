@@ -16,6 +16,9 @@ namespace MyBlog.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
         public string Title { get; set; }
+        
+        public string Slug { get; set; }
+
         [Required]
         [StringLength(1024, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
         public string Description { get; set; }
@@ -27,7 +30,6 @@ namespace MyBlog.Models
         [DataType(DataType.Date)]
         [Display(Name = "Updated Date")]
         public DateTime? Updated { get; set; }
-        public string Slug { get; set; }
 
         public int ContentSize { get; set; }
 
@@ -38,9 +40,12 @@ namespace MyBlog.Models
         public IFormFile? Image { get; set; }
 
         //Navigation Properties
-        public BlogUser Author { get; set; }
-        public Blog? Blog { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
-        public virtual ICollection<PostTag> PostTags { get; set; } = new HashSet<PostTag>();
+        public virtual BlogUser Author { get; set; }
+        public virtual Blog? Blog { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; } = new HashSet<Comment>();
+        public virtual ICollection<PostTag>? PostTags { get; set; } = new HashSet<PostTag>();
+        public virtual ICollection<PostContentText>? PostContentTexts { get; set; } = new HashSet<PostContentText>();
+        public virtual ICollection<PostContentImage>? PostContentImages { get; set; } = new HashSet<PostContentImage>();
+        public virtual ICollection<PostContentCode>? PostContentCodes { get; set; } = new HashSet<PostContentCode>();
     }
 }

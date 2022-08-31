@@ -25,8 +25,16 @@ builder.Services.AddControllersWithViews();
 
 //Register our Services
 builder.Services.AddScoped<IImageService,BasicImageService>();
+builder.Services.AddScoped<DataService>();
+
 
 var app = builder.Build();
+
+DataService dataservice = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataService>();
+if (dataservice != null) await dataservice.ManageDataAsync();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
