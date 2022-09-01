@@ -4,6 +4,8 @@ using MyBlog.Data;
 using MyBlog.Models;
 using MyBlog.Services;
 using MyBlog.Services.Interfaces;
+using MyBlog.ViewModels;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 
 builder.Services.AddIdentity<BlogUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -25,16 +25,17 @@ builder.Services.AddControllersWithViews();
 
 //Register our Services
 builder.Services.AddScoped<IImageService,BasicImageService>();
+builder.Services.AddScoped<ISlugService, SlugService>();
 builder.Services.AddScoped<DataService>();
 
+//Register preconfigured instances
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<IBlogEmailSender, EmailService>();
 
 var app = builder.Build();
 
 DataService dataservice = app.Services.CreateScope().ServiceProvider.GetRequiredService<DataService>();
 if (dataservice != null) await dataservice.ManageDataAsync();
-
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -8,10 +8,16 @@ namespace MyBlog.Models
     {
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
+        [Display(Name ="First Name")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at most {1} characters long.", MinimumLength = 2)]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
         public string? TwitterUrl { get; set; }
         public string? GithubUrl { get; set; }
         public string? LinkedInUrl { get; set; }
